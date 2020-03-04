@@ -1,6 +1,6 @@
 USE burger_db;
 
-INSERT INTO items
+INSERT INTO burgers
 (burger_name)
 VALUES
 ('Big Belly Buster'),
