@@ -33,9 +33,11 @@ const createBurger = burgerObj => {
 // Did you devour the burger?
 // burgerObj => { devoured: true } OR { devoured: false}
 
-const devourBurger = (burgerObj, burgerId) => {
+const updateBurger = (burgerObj, burgerId) => {
+  // burgerObj.devoured = parseInt(burgerObj.devoured)
+  // console.log(burgerObj, burgerId)
   return new Promise((resolve, reject) => {
-    connection.query('UPDATE burgers SET ? WHERE id = ?' [burgerObj, burgerId], (err, burgerdata) => {
+    connection.query('UPDATE burgers SET ? WHERE id = ?', [burgerObj, burgerId], (err, burgerdata) => {
       if (err) {
         console.log(err);
         return reject(err);
@@ -51,7 +53,7 @@ const devourBurger = (burgerObj, burgerId) => {
 
 const deleteBurger = burgerId => {
   return new Promise((resolve, reject) => {
-    connection.query('DELETE FROM burgers WHERE id = ?', [burgerID], (err, burgerdata) => {
+    connection.query('DELETE FROM burgers WHERE id = ?', [burgerId], (err, burgerdata) => {
       if (err) {
         console.log(err);
         return reject(err);
@@ -63,4 +65,4 @@ const deleteBurger = burgerId => {
   });
 };
 
-module.exports = { getBurgers, createBurger, devourBurger, deleteBurger };
+module.exports = { getBurgers, createBurger, updateBurger, deleteBurger };

@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 // import functionality to get all burgers
 
-const { getBurgers } = require('../../controllers/burgers_controller');
+const { getBurgers } = require('../../controllers/burger_controller');
 
 //set up root '/' GET route to serve homepage with burder data
 
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   //get all burger data
   getBurgers()
   .then(burgerdata => {
-    res.render('home', { burgers: burgerdata });
+    res.render('index', { burgers: burgerdata });
   })
   .catch(err => {
     res.status(500).end();
